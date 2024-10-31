@@ -9,6 +9,18 @@ export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
+    if (url.pathname.endsWith('/models')) {
+      return createResponse({
+        object: 'list',
+        data: [
+          {
+            id: 'gpt-4o',
+            object: 'model',
+          },
+        ],
+      });
+    }
+
     if (url.pathname === '/v1/chat/completions') {
       try {
         const body = await request.json();
