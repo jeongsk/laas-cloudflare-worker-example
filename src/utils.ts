@@ -47,3 +47,7 @@ export async function responseStream(ctx: ExecutionContext, call: Promise<Preset
     },
   });
 }
+
+export function validateApiKey(apiKey: string): boolean {
+  return apiKey?.length > 0;
+}
