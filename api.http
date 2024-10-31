@@ -1,0 +1,55 @@
+###
+POST https://api-laas.wanted.co.kr/api/preset/chat/completions
+Content-Type: application/json; charset=utf-8
+project: JEONGSK
+apiKey: 24bd8a809515b8c2ed5246d3791ef8387fba2ae948a5f0585341b718fcd90171
+
+{
+		"messages": [{
+			"role": "user",
+			"content": "2024 대한민국 대통령은?"
+		}],
+		"hash": "03e28d0f8fcb9184b37cc5132bff67c3c74b8387bc84002649917d2cf6b131bc",
+ 		"params": {"date":"2024-09-18"}
+}
+
+
+###
+POST https://api-laas.wanted.co.kr/api/preset/chat/completions
+Content-Type: application/json; charset=utf-8
+project: JEONGSK
+apiKey: 24bd8a809515b8c2ed5246d3791ef8387fba2ae948a5f0585341b718fcd90171
+
+{
+		"messages": [{
+			"role": "user",
+			"content": "오늘 날짜는?"
+		}],
+		"hash": "03e28d0f8fcb9184b37cc5132bff67c3c74b8387bc84002649917d2cf6b131bc",
+ 		"params": {"date":"2024-09-18"}
+}
+
+
+###
+POST http://localhost:8787/chat/completions
+Content-Type: application/json; charset=utf-8
+
+{
+	"messages": [
+		{
+			"role": "system",
+			"content": "When generating new code:\n\n1. Always produce a single code block.\n2. Never separate the code into multiple code blocks.\n3. Only include the code that is being added.\n4. Replace existing code with a \"lazy\" comment like this: \"// ... existing code ...\"\n5. The \"lazy\" comment must always be a valid comment in the current context (e.g. \"<!-- ... existing code ... -->\" for HTML, \"// ... existing code ...\" for JavaScript, \"{/* ... existing code */}\" for TSX, etc.)\n6. You must always provide 1-2 lines of context above and below a \"lazy\" comment\n7. If the user submits a code block that contains a filename in the language specifier, always include the filename in any code block you generate based on that file. The filename should be on the same line as the language specifier in your code block.\n\nExample 1:\nInput:\n```test.js\nimport addition from \"addition\"\n\nclass Calculator {\n  constructor() {\n    this.result = 0;\n  }\n    \n  add(number) {\n    this.result += number;\n    return this;\n  }\n}\n```\nUser request: Add a subtract method\n\nOutput:\n```javascript test.js\n// ... existing code ...\nimport subtraction from \"subtraction\"\n\nclass Calculator {\n  // ... existing code ...\n  \n  subtract(number) {\n    this.result -= number;\n    return this;\n  }\n}\n```\n\nExample 2:\nInput:\n```javascript test.js (6-9)\nfunction helloWorld() {}\n```\n\nOutput:\n```javascript test.js\nfunction helloWorld() {\n  // New code here\n}\n```\n\nAlways follow these guidelines when generating code responses."
+		},
+		{
+			"role": "user",
+			"content": [
+				{
+					"type": "text",
+					"text": "안녕"
+				}
+			]
+		}
+	],
+	"title": "LaaS - claude-3.5-sonnet",
+	"completionOptions": {}
+}
